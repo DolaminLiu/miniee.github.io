@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>刘敏</title>
+  
+  <subtitle>学习&amp;生活记录</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-04-11T11:58:24.055Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Mia Liu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2018/04/11/hello-world/"/>
+    <id>http://yoursite.com/2018/04/11/hello-world/</id>
+    <published>2018-04-11T03:24:11.349Z</published>
+    <updated>2018-04-11T11:58:24.055Z</updated>
+    
+    <content type="html"><![CDATA[<p>我的第一篇博客，开熏~</p><p><img src="/upload/image/happy.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我的第一篇博客，开熏~&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/upload/image/happy.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
