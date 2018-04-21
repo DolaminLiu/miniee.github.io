@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-14T03:49:18.881Z</updated>
+  <updated>2018-04-20T09:52:38.435Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>easypiechart通过AJAX获取Json数据，动态刷新</title>
+    <link href="http://yoursite.com/2018/04/20/asypiechart%E9%80%9A%E8%BF%87AJAX%E8%8E%B7%E5%8F%96Json%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0-1/"/>
+    <id>http://yoursite.com/2018/04/20/asypiechart通过AJAX获取Json数据，动态刷新-1/</id>
+    <published>2018-04-20T09:47:00.000Z</published>
+    <updated>2018-04-20T09:52:38.435Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>这是我寄几写来记录的，有需要的可以参考，如果有不对的地方欢迎指正 QAQ</strong><br>我们的需求是，一进入页面为了保证加载快一点，先给定一个值，然后每三秒钟根据后台传来的json文件刷新数据，话不多说，上图。这是初始情况下的echart。<br><img src="http://upload-images.jianshu.io/upload_images/4620451-154d9fc4af816946.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="start"></p><pre><code>&lt;li&gt;    &lt;div id=&quot;pie_1&quot; class=&quot;piechart&quot;        data-percent=&quot;0&quot;&gt;        &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;连网状态 &lt;/span&gt;&lt;/li&gt;&lt;li&gt;    &lt;div id=&quot;pie_2&quot; class=&quot;piechart&quot;        data-percent=&quot;0&quot;&gt;         &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;云服务&lt;/span&gt;&lt;/li&gt;&lt;li&gt;    &lt;div id=&quot;pie_3&quot; class=&quot;piechart&quot;        data-percent=&quot;18&quot;&gt;         &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;远程运维&lt;/span&gt;&lt;/li&gt;&lt;li&gt;    &lt;div id=&quot;pie_4&quot; class=&quot;piechart&quot; data-percent=&quot;85&quot;&gt;        &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;版本升级&lt;/span&gt;&lt;/li&gt;</code></pre><p>以上是初始情况下的HTML。<br>下面上js。</p><pre>var chart1;var chart2;var chart3;var handleProfileSkillPie = function () {    //Pie 1    $('#pie_1').easyPieChart({        easing: 'easeOutBounce',        onStep: function(from, to, percent) {            $(this.el).find('.percent').text(Math.round(percent)+"%");        },        lineWidth: 6,        barColor: '#F0AD4E'    });     chart1 = window.chart = $('#pie_1').data('easyPieChart');    //Pie 2    $('#pie_2').easyPieChart({        easing: 'easeOutBounce',        onStep: function(from, to, percent) {            $(this.el).find('.percent').text(Math.round(percent)+"%");        },        lineWidth: 6,        barColor: '#D9534F'    });    chart2 = window.chart = $('#pie_2').data('easyPieChart');     //Pie 3    $('#pie_3').easyPieChart({        easing: 'easeOutBounce',        onStep: function(from, to, percent) {            $(this.el).find('.percent').text(Math.round(percent)+"%");        },        lineWidth: 6,        barColor: '#70AFC4'    });    chart3 = window.chart = $('#pie_3').data('easyPieChart');      handleProfileSkillPie();</pre><p>接下来是AJAX。</p><pre>     function loadnumber(){         var all;         var num;         var cloud;         var control;         $.ajax({            url:'数据来源json文件的url',            type:'get',            dataTpye:'json',            cache:false,            async:true,            success:function(data){                    all=data.allCount;                    var number=data.statusCount;                    num=number.networkStatus;                    cloud=number.cloudStatus;                    control=number.controlStatus;                                                   $('#pie_1').attr('data-percent',Math.round(num/all));                    $('#pie_2').attr('data-percent',Math.round(cloud/all));                    $('#pie_3').attr('data-percent',Math.round(control/all));                                  $('#pie_1 .percent').text(Math.round(num/all)+"%");                    $('#pie_2 .percent').text(Math.round(cloud/all)+"%");                    $('#pie_3 .percent').text(Math.round(control/all)+"%");<p>             `//这里重画easypiechart `                    chart1.update(Math.round(num/all));                    chart2.update(Math.round(cloud/all));                    chart3.update(Math.round(control/all));                }             })         }         $(document).ready(function(){               window.setInterval(loadnumber,3000);             })</p></pre><p><img src="http://upload-images.jianshu.io/upload_images/4620451-c2142cde90a5223b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="done"></p><p>大功告成咯，真好玩，这是动态的局部刷新，我不会搞动图进来，so,就酱~</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;这是我寄几写来记录的，有需要的可以参考，如果有不对的地方欢迎指正 QAQ&lt;/strong&gt;&lt;br&gt;我们的需求是，一进入页面为了保证加载快一点，先给定一个值，然后每三秒钟根据后台传来的json文件刷新数据，话不多说，上图。这是初始情况下的echart。&lt;br&gt;
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="easypiechart" scheme="http://yoursite.com/tags/easypiechart/"/>
+    
+  </entry>
   
   <entry>
     <title>myblog</title>
