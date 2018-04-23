@@ -1,2 +1,2 @@
 # miniee.github.io
-[my blog](https://github.com/miniee/miniee.github.io.git)
+[my blog](https://miniee.github.io/)
