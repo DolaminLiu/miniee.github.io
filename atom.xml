@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-20T09:52:38.435Z</updated>
+  <updated>2018-04-21T03:31:45.073Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2018/04/23/hello-world/"/>
+    <id>http://yoursite.com/2018/04/23/hello-world/</id>
+    <published>2018-04-23T09:30:48.026Z</published>
+    <updated>2018-04-21T03:31:45.073Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="/2018/04/23/hello-world/happy.jpg" alt=""><br><a id="more"></a><br>我的第一篇博客，开熏~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;/2018/04/23/hello-world/happy.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="record" scheme="http://yoursite.com/tags/record/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>通过git shell 在Github上传本地项目</title>
+    <link href="http://yoursite.com/2018/04/23/git-shell-%E5%9C%A8Github%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/"/>
+    <id>http://yoursite.com/2018/04/23/git-shell-在Github上传本地项目/</id>
+    <published>2018-04-23T08:23:00.000Z</published>
+    <updated>2018-04-23T08:26:41.872Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>首先现在github上新建一个库，再进行如下操作，过程不赘述</p></blockquote><p>1.打开git shell</p><p>2.cd到项目位置 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: green;font-size:14px">// cd archives-vue</span></p><p>3.git init</p><p>4.Get add&nbsp;. &nbsp;&nbsp;&nbsp;&nbsp; <span style="color: green;font-size:14px">//这里add后面有空格</span></p><p>5.git commit -m “” &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: green;font-size:14px">//设置提交信息</span></p><p>6.git remote add origin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: green;font-size:14px">//本地仓库链接远程仓库，origin为远程库的名称，后面跟着开始新建库的github的路径</span></p><p>7.git remote -v</p><p>8.git push origin master &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: green;font-size:14px">//push文件到仓库中<br><br><br><br><br><span style="color: red">期间若有报错</span></span></p><p>则需要更新一下<br><br>TortoiseGit-preview-2.5.7.0-20180127-b2d00f8-64bit.msi和Git-2.16.2-64-bit.exe<br>链接地址为：<br><br><a href="https://github.com/git-for-windows/git/releases/download/v2.16.2.windows.1/Git-2.16.2-64-bit.exe" target="_blank" rel="noopener">https://github.com/git-for-windows/git/releases/download/v2.16.2.windows.1/Git-2.16.2-64-bit.exe</a><br><br><a href="https://download.tortoisegit.org/tgit/2.6.0.0/" target="_blank" rel="noopener">https://download.tortoisegit.org/tgit/2.6.0.0/</a><br><br><br>9.更新以后在下载安装的git-cmd打开,在弹出的窗口登录github账号 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: green;font-size:14px">//一般目录为c/program files/git</span></p><p>10.cd到项目位置 </p><p>11.git push origin master</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;首先现在github上新建一个库，再进行如下操作，过程不赘述&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;1.打开git shell&lt;/p&gt;
+&lt;p&gt;2.cd到项目位置 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;span styl
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="github" scheme="http://yoursite.com/tags/github/"/>
+    
+  </entry>
   
   <entry>
     <title>easypiechart通过AJAX获取Json数据，动态刷新</title>
@@ -58,26 +107,6 @@
     
     
       <category term="emotion" scheme="http://yoursite.com/tags/emotion/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2018/04/11/hello-world/"/>
-    <id>http://yoursite.com/2018/04/11/hello-world/</id>
-    <published>2018-04-11T03:24:11.349Z</published>
-    <updated>2018-04-21T03:31:45.073Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/2018/04/11/hello-world/happy.jpg" alt=""><br><a id="more"></a><br>我的第一篇博客，开熏~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;/2018/04/11/hello-world/happy.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="record" scheme="http://yoursite.com/tags/record/"/>
     
   </entry>
   
