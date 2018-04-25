@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-24T07:47:12.000Z</updated>
+  <updated>2018-04-25T09:47:43.781Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue新建项目</title>
+    <link href="http://yoursite.com/2018/04/25/vue%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
+    <id>http://yoursite.com/2018/04/25/vue新建项目/</id>
+    <published>2018-04-25T09:24:00.000Z</published>
+    <updated>2018-04-25T09:47:43.781Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="新建VUE项目"><a href="#新建VUE项目" class="headerlink" title="新建VUE项目"></a>新建VUE项目</h5><p>环境要求：  安装有 Node.js、 vue、 vue-cli<br></p><h6 id="在硬盘上找一个文件夹放工程用的，在终端中进入该目录-cd目录路径"><a href="#在硬盘上找一个文件夹放工程用的，在终端中进入该目录-cd目录路径" class="headerlink" title="在硬盘上找一个文件夹放工程用的，在终端中进入该目录,cd目录路径"></a>在硬盘上找一个文件夹放工程用的，在终端中进入该目录,cd目录路径</h6><p>npm install-g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a>  // 为了加快速度，不必须</p><h6 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h6><p>cnpm install webpack-g</p><h6 id="安装vue脚手架"><a href="#安装vue脚手架" class="headerlink" title="安装vue脚手架"></a>安装vue脚手架</h6><p>npm install vue-cli-g</p><p>然后就可以创建vue项目了</p><h6 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h6><ul><li>vue init webpack projectName</li><li>Npm install</li><li>Npm run dev</li></ul><p><br><br></p><h6 id="一些其他tips"><a href="#一些其他tips" class="headerlink" title="一些其他tips"></a><code>一些其他tips</code></h6><p>删除node_modules文件夹</p><ul><li>npm install rimraf -g </li><li>rimraf node_modules</li></ul><p>使用sass<br>安装sass的依赖包</p><ul><li>npm install –save-dev sass-loader //sass-loader依赖于node-sass </li><li>npm install –save-dev node-sass</li></ul><p>引用sass/scss 文件</p><ul><li>@import “./common/scss/mixin”;</li></ul><p><br><br></p><h6 id="配置-flexible"><a href="#配置-flexible" class="headerlink" title="配置 flexible"></a>配置 flexible</h6><ul><li>安装 lib-flexible<ul><li>npm i lib-flexible –save</li></ul></li><li><p>引入 lib-flexible,在项目入口文件 main.js 里 引入 lib-flexible</p></li><li><p>添加 meta 标签</p><ul><li>在项目根目录的 index.html 中添加如下 meta</li></ul></li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span><br></pre></td></tr></table></figure><p><br></p><h6 id="px-转-rem"><a href="#px-转-rem" class="headerlink" title="px 转 rem"></a>px 转 rem</h6><p>实际开发中，我们通过设计稿得到的值单位是 px，所以要将 px 转换成 rem 再写进样式中。<br><br>将 px 转换成 rem 我们将使用 px2rem 这个工具，它有 webpack 的 loader：px2rem-loader </p><ul><li>安装 px2rem-loader<ul><li>npm i px2rem-loade –save-dev</li></ul></li><li>配置 px2rem-loade<blockquote><p>在 vue-cli 生成的 webpack 配置中，vue-loader 的 options 和其他样式文件 loader 最终是都是由 build/utils.js 里的一个方法生成的。</p></blockquote></li></ul><p>我们只需在 cssLoader 后再加上一个 px2remLoader 即可，px2rem-loader 的 remUnit 选项意思是 1rem=多少像素，结合 lib-flexible 的方案，我们将 px2remLoader 的 options.remUnit 设置成设计稿宽度的 1/10，这里我们假设设计稿宽为 750px。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// utils.js</span></span><br><span class="line"><span class="keyword">var</span> cssLoader = &#123;</span><br><span class="line">  loader: <span class="string">'css-loader'</span>,</span><br><span class="line">  options: &#123;</span><br><span class="line">    minimize: process.env.NODE_ENV === <span class="string">'production'</span>,</span><br><span class="line">    sourceMap: options.sourceMap</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> px2remLoader = &#123;</span><br><span class="line">  loader: <span class="string">'px2rem-loader'</span>,</span><br><span class="line">  options: &#123;</span><br><span class="line">    remUnit: <span class="number">75</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure></p><p>并放进 loaders 数组中<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// utils.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateLoaders</span>(<span class="params">loader, loaderOptions</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> loaders = [cssLoader, px2remLoader]</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure></p><p>修改配置后需要重启，然后我们在组件中写单位直接写 px，设计稿量多少就可以写多少。<br><br><code>都是在网上收录的，供自己看</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;新建VUE项目&quot;&gt;&lt;a href=&quot;#新建VUE项目&quot; class=&quot;headerlink&quot; title=&quot;新建VUE项目&quot;&gt;&lt;/a&gt;新建VUE项目&lt;/h5&gt;&lt;p&gt;环境要求：  安装有 Node.js、 vue、 vue-cli&lt;br&gt;&lt;/p&gt;
+&lt;h6 id=&quot;在
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="VUE" scheme="http://yoursite.com/tags/VUE/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
