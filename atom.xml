@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-25T09:47:43.781Z</updated>
+  <updated>2018-04-25T09:59:10.649Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>100 days</title>
+    <link href="http://yoursite.com/2018/04/25/100-days/"/>
+    <id>http://yoursite.com/2018/04/25/100-days/</id>
+    <published>2018-04-25T09:55:00.000Z</published>
+    <updated>2018-04-25T09:59:10.649Z</updated>
+    
+    <content type="html"><![CDATA[<p>分享一首歌</p><ul><li><a href="http://music.163.com/#/m/song?id=413829873&amp;userid=84619541" target="_blank" rel="noopener">还想听你的故事</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;分享一首歌&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://music.163.com/#/m/song?id=413829873&amp;amp;userid=84619541&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;还想听你的故事&lt;/a&gt;&lt;/l
+      
+    
+    </summary>
+    
+      <category term="emotion" scheme="http://yoursite.com/categories/emotion/"/>
+    
+      <category term="record" scheme="http://yoursite.com/categories/emotion/record/"/>
+    
+    
+      <category term="tags" scheme="http://yoursite.com/tags/tags/"/>
+    
+  </entry>
   
   <entry>
     <title>vue新建项目</title>
@@ -39,30 +68,6 @@
     
     
       <category term="VUE" scheme="http://yoursite.com/tags/VUE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2018/04/23/hello-world/"/>
-    <id>http://yoursite.com/2018/04/23/hello-world/</id>
-    <published>2018-04-23T09:30:48.026Z</published>
-    <updated>2018-04-24T07:47:12.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/2018/04/23/hello-world/happy.jpg" alt=""><br>我的第一篇博客，开熏~</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;img src=&quot;/2018/04/23/hello-world/happy.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;我的第一篇博客，开熏~&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-      <category term="record" scheme="http://yoursite.com/tags/record/"/>
     
   </entry>
   
