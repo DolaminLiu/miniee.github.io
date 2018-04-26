@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-26T06:21:12.995Z</updated>
+  <updated>2018-04-26T09:46:09.898Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>VUE通过路由来判断选中状态</title>
+    <link href="http://yoursite.com/2018/04/26/E%E9%80%9A%E8%BF%87%E8%B7%AF%E7%94%B1%E6%9D%A5%E5%88%A4%E6%96%AD%E9%80%89%E4%B8%AD%E7%8A%B6%E6%80%81/"/>
+    <id>http://yoursite.com/2018/04/26/E通过路由来判断选中状态/</id>
+    <published>2018-04-26T09:42:00.000Z</published>
+    <updated>2018-04-26T09:46:09.898Z</updated>
+    
+    <content type="html"><![CDATA[<p>路由配置</p><p><img src="https://upload-images.jianshu.io/upload_images/4620451-875a1f46bb2f0616.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="路由.png"></p><p>/main是一个非登录的首页，主要功能就是有四个菜单选项，点击进入相应的子页面</p><p><img src="https://upload-images.jianshu.io/upload_images/4620451-a564816e793d32dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="main页面.png"></p><p>这些子页面都有共同的头部和侧边栏，所以归类到/home这个路由下，main.js需要配置一下项目一打开进入的是/main页面</p><p><img src="https://upload-images.jianshu.io/upload_images/4620451-24624f94a258af92.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="home.jpg"></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (to.path === <span class="string">'/'</span>) &#123;</span><br><span class="line">    next(&#123; <span class="attr">path</span>: <span class="string">'/main'</span> &#125;)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    next()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>/home侧栏的写法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 左边导航菜单</span></span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"side-bar"</span>&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"side-list"</span>&gt;</span><br><span class="line">        &lt;div :<span class="keyword">default</span>-active=<span class="string">"$route.router"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"menu-demo"</span> router&gt;</span><br><span class="line">          &lt;div v-<span class="keyword">for</span>=<span class="string">"item in $router.options.routes[2].children"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"nav-list"</span></span><br><span class="line">          :key=<span class="string">"item.id"</span></span><br><span class="line">          :<span class="class"><span class="keyword">class</span></span>=<span class="string">"$route.path.indexOf(item.path) &gt;= 0 ?'is-active':''"</span></span><br><span class="line">          @click=<span class="string">"$router.push(item.path)"</span>&gt;</span><br><span class="line">            &lt;div :index=<span class="string">"item.path"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"rt-link"</span>&gt;</span><br><span class="line">              &lt;i :<span class="class"><span class="keyword">class</span></span>=<span class="string">"item.iconCls"</span>&gt;&lt;/i&gt;</span><br><span class="line">              &lt;h4&gt; &#123;&#123; item.name &#125;&#125;&lt;<span class="regexp">/h4&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">          &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;路由配置&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/4620451-875a1f46bb2f0616.png?imageMogr2/auto-orient/strip%7CimageVie
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="VUE" scheme="http://yoursite.com/tags/VUE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="http://yoursite.com/2018/04/26/hello-world/"/>
     <id>http://yoursite.com/2018/04/26/hello-world/</id>
     <published>2018-04-26T06:21:12.991Z</published>
-    <updated>2018-04-26T06:21:12.995Z</updated>
+    <updated>2018-04-26T09:11:45.927Z</updated>
     
     <content type="html"><![CDATA[<p><img src="/2018/04/26/hello-world/happy.jpg" alt=""><br>我的第一篇博客，开熏~</p>]]></content>
     
@@ -45,7 +71,7 @@
     <link href="http://yoursite.com/2018/04/25/100-days/"/>
     <id>http://yoursite.com/2018/04/25/100-days/</id>
     <published>2018-04-25T09:55:00.000Z</published>
-    <updated>2018-04-26T07:02:24.302Z</updated>
+    <updated>2018-04-26T09:46:38.399Z</updated>
     
     <content type="html"><![CDATA[<p>分享一首歌</p><div class="aplayer" data-id="413829873" data-server="netease" data-type="song"></div>]]></content>
     
@@ -61,10 +87,6 @@
     
       <category term="emotion" scheme="http://yoursite.com/categories/emotion/"/>
     
-      <category term="record" scheme="http://yoursite.com/categories/emotion/record/"/>
-    
-    
-      <category term="tags" scheme="http://yoursite.com/tags/tags/"/>
     
   </entry>
   
@@ -128,15 +150,15 @@
     <link href="http://yoursite.com/2018/04/20/asypiechart%E9%80%9A%E8%BF%87AJAX%E8%8E%B7%E5%8F%96Json%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0-1/"/>
     <id>http://yoursite.com/2018/04/20/asypiechart通过AJAX获取Json数据，动态刷新-1/</id>
     <published>2018-04-20T09:47:00.000Z</published>
-    <updated>2018-04-26T08:28:00.924Z</updated>
+    <updated>2018-04-26T09:31:03.687Z</updated>
     
-    <content type="html"><![CDATA[<p><strong>这是我寄几写来记录的，有需要的可以参考，如果有不对的地方欢迎指正 QAQ</strong><br>我们的需求是，一进入页面为了保证加载快一点，先给定一个值，然后每三秒钟根据后台传来的json文件刷新数据，话不多说，上图。这是初始情况下的echart。<br><img src="http://upload-images.jianshu.io/upload_images/4620451-154d9fc4af816946.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="start"></p><pre><code>&lt;li&gt;    &lt;div id=&quot;pie_1&quot; class=&quot;piechart&quot;        data-percent=&quot;0&quot;&gt;        &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;连网状态 &lt;/span&gt;&lt;/li&gt;&lt;li&gt;    &lt;div id=&quot;pie_2&quot; class=&quot;piechart&quot;        data-percent=&quot;0&quot;&gt;         &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;云服务&lt;/span&gt;&lt;/li&gt;&lt;li&gt;    &lt;div id=&quot;pie_3&quot; class=&quot;piechart&quot;        data-percent=&quot;18&quot;&gt;         &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;远程运维&lt;/span&gt;&lt;/li&gt;&lt;li&gt;    &lt;div id=&quot;pie_4&quot; class=&quot;piechart&quot; data-percent=&quot;85&quot;&gt;        &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;版本升级&lt;/span&gt;&lt;/li&gt;</code></pre><p>以上是初始情况下的HTML。<br>下面上js。</p><pre>var chart1;var chart2;var chart3;var handleProfileSkillPie = function () {    //Pie 1    $('#pie_1').easyPieChart({        easing: 'easeOutBounce',        onStep: function(from, to, percent) {            $(this.el).find('.percent').text(Math.round(percent)+"%");        },        lineWidth: 6,        barColor: '#F0AD4E'    });     chart1 = window.chart = $('#pie_1').data('easyPieChart');    //Pie 2    $('#pie_2').easyPieChart({        easing: 'easeOutBounce',        onStep: function(from, to, percent) {            $(this.el).find('.percent').text(Math.round(percent)+"%");        },        lineWidth: 6,        barColor: '#D9534F'    });    chart2 = window.chart = $('#pie_2').data('easyPieChart');     //Pie 3    $('#pie_3').easyPieChart({        easing: 'easeOutBounce',        onStep: function(from, to, percent) {            $(this.el).find('.percent').text(Math.round(percent)+"%");        },        lineWidth: 6,        barColor: '#70AFC4'    });    chart3 = window.chart = $('#pie_3').data('easyPieChart');     }     handleProfileSkillPie();</pre><p>接下来是AJAX。</p><pre>     function loadnumber(){         var all;         var num;         var cloud;         var control;         $.ajax({            url:'数据来源json文件的url',            type:'get',            dataTpye:'json',            cache:false,            async:true,            success:function(data){                    all=data.allCount;                    var number=data.statusCount;                    num=number.networkStatus;                    cloud=number.cloudStatus;                    control=number.controlStatus;                                                   $('#pie_1').attr('data-percent',Math.round(num/all));                    $('#pie_2').attr('data-percent',Math.round(cloud/all));                    $('#pie_3').attr('data-percent',Math.round(control/all));                                  $('#pie_1 .percent').text(Math.round(num/all)+"%");                    $('#pie_2 .percent').text(Math.round(cloud/all)+"%");                    $('#pie_3 .percent').text(Math.round(control/all)+"%");<p>             `//这里重画easypiechart `                    chart1.update(Math.round(num/all));                    chart2.update(Math.round(cloud/all));                    chart3.update(Math.round(control/all));                }             })         }         $(document).ready(function(){               window.setInterval(loadnumber,3000);             })</p></pre><p><img src="http://upload-images.jianshu.io/upload_images/4620451-c2142cde90a5223b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="done"></p><p>大功告成咯，真好玩，这是动态的局部刷新，我不会搞动图进来，so,就酱~</p>]]></content>
+    <content type="html"><![CDATA[<p><strong>这是我寄几写来记录的，有需要的可以参考，如果有不对的地方欢迎指正 QAQ</strong><br>首先需要引用JQ和easypiechart相关js<br>我们的需求是，一进入页面为了保证加载快一点，先给定一个值，然后每三秒钟根据后台传来的json文件刷新数据，话不多说，上图。这是初始情况下的echart。<br><img src="http://upload-images.jianshu.io/upload_images/4620451-154d9fc4af816946.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="start"></p><pre><code>&lt;li&gt;    &lt;div id=&quot;pie_1&quot; class=&quot;piechart&quot;        data-percent=&quot;0&quot;&gt;        &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;连网状态 &lt;/span&gt;&lt;/li&gt;&lt;li&gt;    &lt;div id=&quot;pie_2&quot; class=&quot;piechart&quot;        data-percent=&quot;0&quot;&gt;         &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;云服务&lt;/span&gt;&lt;/li&gt;&lt;li&gt;    &lt;div id=&quot;pie_3&quot; class=&quot;piechart&quot;        data-percent=&quot;18&quot;&gt;         &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;远程运维&lt;/span&gt;&lt;/li&gt;&lt;li&gt;    &lt;div id=&quot;pie_4&quot; class=&quot;piechart&quot; data-percent=&quot;85&quot;&gt;        &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;版本升级&lt;/span&gt;&lt;/li&gt;</code></pre><p>以上是初始情况下的HTML。<br>下面上js。</p><pre>var chart1;var chart2;var chart3;var handleProfileSkillPie = function () {    //Pie 1    $('#pie_1').easyPieChart({        easing: 'easeOutBounce',        onStep: function(from, to, percent) {            $(this.el).find('.percent').text(Math.round(percent)+"%");        },        lineWidth: 6,        barColor: '#F0AD4E'    });     chart1 = window.chart = $('#pie_1').data('easyPieChart');    //Pie 2    $('#pie_2').easyPieChart({        easing: 'easeOutBounce',        onStep: function(from, to, percent) {            $(this.el).find('.percent').text(Math.round(percent)+"%");        },        lineWidth: 6,        barColor: '#D9534F'    });    chart2 = window.chart = $('#pie_2').data('easyPieChart');     //Pie 3    $('#pie_3').easyPieChart({        easing: 'easeOutBounce',        onStep: function(from, to, percent) {            $(this.el).find('.percent').text(Math.round(percent)+"%");        },        lineWidth: 6,        barColor: '#70AFC4'    });    chart3 = window.chart = $('#pie_3').data('easyPieChart');     }     handleProfileSkillPie();</pre><p>接下来是AJAX。</p><pre>     function loadnumber(){         var all;         var num;         var cloud;         var control;         $.ajax({            url:'数据来源json文件的url',            type:'get',            dataTpye:'json',            cache:false,            async:true,            success:function(data){                    all=data.allCount;                    var number=data.statusCount;                    num=number.networkStatus;                    cloud=number.cloudStatus;                    control=number.controlStatus;                                                   $('#pie_1').attr('data-percent',Math.round(num/all));                    $('#pie_2').attr('data-percent',Math.round(cloud/all));                    $('#pie_3').attr('data-percent',Math.round(control/all));                                  $('#pie_1 .percent').text(Math.round(num/all)+"%");                    $('#pie_2 .percent').text(Math.round(cloud/all)+"%");                    $('#pie_3 .percent').text(Math.round(control/all)+"%");<p>             `//这里重画easypiechart `                    chart1.update(Math.round(num/all));                    chart2.update(Math.round(cloud/all));                    chart3.update(Math.round(control/all));                }             })         }         $(document).ready(function(){               window.setInterval(loadnumber,3000);             })</p></pre><p><img src="http://upload-images.jianshu.io/upload_images/4620451-c2142cde90a5223b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="done"></p><p>大功告成咯，真好玩，这是动态的局部刷新，我不会搞动图进来，so,就酱~</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;strong&gt;这是我寄几写来记录的，有需要的可以参考，如果有不对的地方欢迎指正 QAQ&lt;/strong&gt;&lt;br&gt;我们的需求是，一进入页面为了保证加载快一点，先给定一个值，然后每三秒钟根据后台传来的json文件刷新数据，话不多说，上图。这是初始情况下的echart。&lt;br&gt;
+        &lt;p&gt;&lt;strong&gt;这是我寄几写来记录的，有需要的可以参考，如果有不对的地方欢迎指正 QAQ&lt;/strong&gt;&lt;br&gt;首先需要引用JQ和easypiechart相关js&lt;br&gt;我们的需求是，一进入页面为了保证加载快一点，先给定一个值，然后每三秒钟根据后台传来的json文件刷新数
       
     
     </summary>
