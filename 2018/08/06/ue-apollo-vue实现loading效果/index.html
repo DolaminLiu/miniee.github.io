@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="h5, mia blog" />
+  <meta name="keywords" content="vue," />
 
 
 
@@ -89,16 +89,18 @@
 
 
 
-<meta name="description" content="趁青春尚存，别为生活沉沦">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mia&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/easypiechart/index.html">
+<meta name="description" content="需求描述：子路由数据渲染完成以前实现loading组件的效果。12345678910//home.vue&amp;lt;div class=&quot;sec-con clearfix&quot;&amp;gt;        &amp;lt;loading id=&quot;loading&quot;        v-if=&quot;isLoad&quot;          class=&apos;center&apos;          :loadingWord=&quot;loadingWord">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue+apollo-vue实现 loading效果">
+<meta property="og:url" content="http://yoursite.com/2018/08/06/ue-apollo-vue实现loading效果/index.html">
 <meta property="og:site_name" content="Mia&#39;s blog">
-<meta property="og:description" content="趁青春尚存，别为生活沉沦">
+<meta property="og:description" content="需求描述：子路由数据渲染完成以前实现loading组件的效果。12345678910//home.vue&amp;lt;div class=&quot;sec-con clearfix&quot;&amp;gt;        &amp;lt;loading id=&quot;loading&quot;        v-if=&quot;isLoad&quot;          class=&apos;center&apos;          :loadingWord=&quot;loadingWord">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-06T08:19:18.831Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mia&#39;s blog">
-<meta name="twitter:description" content="趁青春尚存，别为生活沉沦">
+<meta name="twitter:title" content="Vue+apollo-vue实现 loading效果">
+<meta name="twitter:description" content="需求描述：子路由数据渲染完成以前实现loading组件的效果。12345678910//home.vue&amp;lt;div class=&quot;sec-con clearfix&quot;&amp;gt;        &amp;lt;loading id=&quot;loading&quot;        v-if=&quot;isLoad&quot;          class=&apos;center&apos;          :loadingWord=&quot;loadingWord">
 
 
 
@@ -126,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/easypiechart/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/06/ue-apollo-vue实现loading效果/"/>
 
 
 
 
 
-  <title> 标签: easypiechart | Mia's blog </title>
+  <title> Vue+apollo-vue实现 loading效果 | Mia's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -157,7 +159,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -262,46 +264,152 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        easypiechart
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/06/ue-apollo-vue实现loading效果/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mia Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mia's blog">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Vue+apollo-vue实现 loading效果
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-06T15:34:00+08:00">
+                2018-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>需求描述：<br><br><br>子路由数据渲染完成以前实现loading组件的效果。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//home.vue</span></span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"sec-con clearfix"</span>&gt;</span><br><span class="line">        &lt;loading id=<span class="string">"loading"</span></span><br><span class="line">        v-<span class="keyword">if</span>=<span class="string">"isLoad"</span></span><br><span class="line">          <span class="class"><span class="keyword">class</span></span>=<span class="string">'center'</span></span><br><span class="line">          :loadingWord=<span class="string">"loadingWord"</span></span><br><span class="line">       &gt;&lt;/loading&gt;</span><br><span class="line">&lt;div id=<span class="string">"content"</span> style=<span class="string">"display:none"</span>&gt;</span><br><span class="line">    &lt;router-view @getstatus=<span class="string">"getstatus"</span>&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>路由如下所示</p>
+<p><pre><br>//routes.js<br>{<br>    path: ‘/‘,<br>    component: Home,<br>    name: ‘home’,<br>    children: [{<br>      path: ‘/robot’,<br>      component: Robot,<br>      iconCls: ‘jqlb-wt’,<br>      name: ‘机器列表’<br>    }, {<br>      path: ‘/status’,<br>      component: Status,<br>      iconCls: ‘yxzt-wt’,<br>      name: ‘运行状态’,<br>    }, {<br>      …<br>    }]<br>    }<br>    </pre><br>    页面布局为，home主页面，左侧一个固定显示的nav导航，右侧固定一个现实router-view的div,点击nav选项，跳转到相应的子路由。<br><br>    最初方案为，子路由向父路由通过$emit传递控制loading显隐的值，查阅apollo-vue文档，发现watchLoading函数实时监控apollo数据的加载，其值isLoading有两个状态，正在加载为true，加载完成为false，所以只要在watchLoading函数里传递isLoading的值即可。<br>但是经过测试，发现$emit传递的isLoading的值并不会根据子路由中isLoading的状态变化而变化，只会传递第一次获取到的isLoading的值，也就是说永远为true。所以在watchLoading函数里加一个判断，当isLoading为false，也就是加载完成以后再传递值，因为父路由只要知道子路由已经加载好即可，默认父路由控制loading的值isLoad为true，当接收到加载完成的值以后，this.isLoad为false。<br>    <pre><br>    //robot.vue<br>    data () {<br>    　　isLoad:　＇＇<br>    },<br>    watchLoading (isLoading) {<br>        if (isLoading === false) {<br>          this.isLoad = false<br>          this.$emit(‘getstatus’, this.isLoad)<br>        }<br>      }<br>    </pre><br>    home页面的判断如下<br>    <pre><br>    methods: {<br>    getstatus: function (isLoad) {<br>      this.isLoad = isLoad<br>      document.getElementById(‘content’).style.display = ‘block’<br>    },<br>    choss: function () {<br>      if (this.$route.path === ‘/robot’) {<br>        this.getstatus()<br>      } else {<br>        document.getElementById(‘content’).style.display = ‘block’<br>        this.isLoad = false<br>      }<br>    }<br>  }<br>    </pre><br>    经测试，功能正常实现。</p>
 
-      <h2 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2018/04/20/asypiechart通过AJAX获取Json数据，动态刷新-1/" itemprop="url">
-              
-                <span itemprop="name">easypiechart通过AJAX获取Json数据，动态刷新</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-20T17:47:00+08:00"
-              content="2018-04-20" >
-          04-20
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/26/E通过路由来判断选中状态/" rel="next" title="VUE通过路由来判断选中状态">
+                <i class="fa fa-chevron-left"></i> VUE通过路由来判断选中状态
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
           
           </div>
@@ -309,6 +417,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -549,6 +661,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 

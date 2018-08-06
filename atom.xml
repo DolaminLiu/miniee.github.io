@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-26T09:46:09.898Z</updated>
+  <updated>2018-08-06T08:19:18.831Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue+apollo-vue实现 loading效果</title>
+    <link href="http://yoursite.com/2018/08/06/ue-apollo-vue%E5%AE%9E%E7%8E%B0loading%E6%95%88%E6%9E%9C/"/>
+    <id>http://yoursite.com/2018/08/06/ue-apollo-vue实现loading效果/</id>
+    <published>2018-08-06T07:34:00.000Z</published>
+    <updated>2018-08-06T08:19:18.831Z</updated>
+    
+    <content type="html"><![CDATA[<p>需求描述：<br><br><br>子路由数据渲染完成以前实现loading组件的效果。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//home.vue</span></span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"sec-con clearfix"</span>&gt;</span><br><span class="line">        &lt;loading id=<span class="string">"loading"</span></span><br><span class="line">        v-<span class="keyword">if</span>=<span class="string">"isLoad"</span></span><br><span class="line">          <span class="class"><span class="keyword">class</span></span>=<span class="string">'center'</span></span><br><span class="line">          :loadingWord=<span class="string">"loadingWord"</span></span><br><span class="line">       &gt;&lt;/loading&gt;</span><br><span class="line">&lt;div id=<span class="string">"content"</span> style=<span class="string">"display:none"</span>&gt;</span><br><span class="line">    &lt;router-view @getstatus=<span class="string">"getstatus"</span>&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p><p>路由如下所示</p><p><pre><br>//routes.js<br>{<br>    path: ‘/‘,<br>    component: Home,<br>    name: ‘home’,<br>    children: [{<br>      path: ‘/robot’,<br>      component: Robot,<br>      iconCls: ‘jqlb-wt’,<br>      name: ‘机器列表’<br>    }, {<br>      path: ‘/status’,<br>      component: Status,<br>      iconCls: ‘yxzt-wt’,<br>      name: ‘运行状态’,<br>    }, {<br>      …<br>    }]<br>    }<br>    </pre><br>    页面布局为，home主页面，左侧一个固定显示的nav导航，右侧固定一个现实router-view的div,点击nav选项，跳转到相应的子路由。<br><br>    最初方案为，子路由向父路由通过$emit传递控制loading显隐的值，查阅apollo-vue文档，发现watchLoading函数实时监控apollo数据的加载，其值isLoading有两个状态，正在加载为true，加载完成为false，所以只要在watchLoading函数里传递isLoading的值即可。<br>但是经过测试，发现$emit传递的isLoading的值并不会根据子路由中isLoading的状态变化而变化，只会传递第一次获取到的isLoading的值，也就是说永远为true。所以在watchLoading函数里加一个判断，当isLoading为false，也就是加载完成以后再传递值，因为父路由只要知道子路由已经加载好即可，默认父路由控制loading的值isLoad为true，当接收到加载完成的值以后，this.isLoad为false。<br>    <pre><br>    //robot.vue<br>    data () {<br>    　　isLoad:　＇＇<br>    },<br>    watchLoading (isLoading) {<br>        if (isLoading === false) {<br>          this.isLoad = false<br>          this.$emit(‘getstatus’, this.isLoad)<br>        }<br>      }<br>    </pre><br>    home页面的判断如下<br>    <pre><br>    methods: {<br>    getstatus: function (isLoad) {<br>      this.isLoad = isLoad<br>      document.getElementById(‘content’).style.display = ‘block’<br>    },<br>    choss: function () {<br>      if (this.$route.path === ‘/robot’) {<br>        this.getstatus()<br>      } else {<br>        document.getElementById(‘content’).style.display = ‘block’<br>        this.isLoad = false<br>      }<br>    }<br>  }<br>    </pre><br>    经测试，功能正常实现。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;需求描述：&lt;br&gt;&lt;br&gt;&lt;br&gt;子路由数据渲染完成以前实现loading组件的效果。&lt;br&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+  </entry>
   
   <entry>
     <title>VUE通过路由来判断选中状态</title>
