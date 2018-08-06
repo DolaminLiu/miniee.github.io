@@ -193,28 +193,4 @@
     
   </entry>
   
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2018/04/11/hello-world/"/>
-    <id>http://yoursite.com/2018/04/11/hello-world/</id>
-    <published>2018-04-11T07:36:23.000Z</published>
-    <updated>2018-08-06T08:57:48.863Z</updated>
-    
-    <content type="html"><![CDATA[<p>我的第一篇博客，开熏~</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;我的第一篇博客，开熏~&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-    
-      <category term="record" scheme="http://yoursite.com/tags/record/"/>
-    
-  </entry>
-  
 </feed>
