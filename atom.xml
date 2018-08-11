@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-08-06T09:07:24.578Z</updated>
+  <updated>2018-08-11T04:12:22.439Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git命令整理</title>
+    <link href="http://yoursite.com/2018/08/11/git%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/"/>
+    <id>http://yoursite.com/2018/08/11/git命令整理/</id>
+    <published>2018-08-11T03:26:00.000Z</published>
+    <updated>2018-08-11T04:12:22.439Z</updated>
+    
+    <content type="html"><![CDATA[<h3>Git常用命令整理</h3><p>查看分支：&nbsp;&nbsp;git branch<br>创建分支：&nbsp;&nbsp;git branch <name><br>切换分支：&nbsp;&nbsp;git checkout <name><br>创建+切换分支：&nbsp;&nbsp;git checkout -b <name><br>合并某分支到当前分支：&nbsp;&nbsp;git merge <name><br>看分支的合并情况: &nbsp;&nbsp;git log –graph –pretty=oneline –abbrev-commit<br>删除分支：&nbsp;&nbsp;git branch -d <name><br>删除untracked files: &nbsp;&nbsp;git clean -nf<br>丢弃一个没有被合并过的分支,强行删除: &nbsp;&nbsp;git branch -D <name><br>查看远程库信息: &nbsp;&nbsp;git remote -v<br>新建一个标签: &nbsp;&nbsp;git tag <tagname><br>指定标签信息: &nbsp;&nbsp;git tag -a <tagname> -m “blablabla…”<br>查看所有标签: &nbsp;&nbsp;git tag<br>查看标签信息： &nbsp;&nbsp;git show tag <tagname><br>推送一个本地标签: &nbsp;&nbsp;git push origin <tagname><br>推送全部未推送过的本地标签： &nbsp;&nbsp;git push origin –tags<br>删除一个本地标签： &nbsp;&nbsp;git tag -d <tagname><br>删除一个远程标签： &nbsp;&nbsp;git push origin :refs/tags/<tagname></tagname></tagname></tagname></tagname></tagname></tagname></name></name></name></name></name></name></p><hr><h3>bug分支</h3>  <blockquote><p>当前正在dev上进行的工作还没有提交  $ git stash 可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作 </p></blockquote><ul><li>首先确定要在哪个分支上修复bug，假定需要在master分支上修复，就从master创建临时分支<br>git checkout master</li><li>修复然后提交<br>git commit -m “modify info”</li><li>修复完成后，切换到master分支，并完成合并,最后删除issue-101分支<br>git checkout master<br>git merge issue-101<br>git branch -d issue-101</li><li>接着回到dev分支<br>git checkout dev  </li><li>工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：<ul><li>一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；</li><li>另一种方式是用git stash pop，恢复的同时把stash内容也删了</li></ul></li></ul><hr><p></p><h3>多人协作</h3><p></p><ul><li>首先，可以试图用git push origin <branch-name>推送自己的修改；</branch-name></li><li>如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；</li><li>如果合并有冲突，则解决冲突，并在本地提交；</li><li>没有冲突或者解决掉冲突后</li><li>如果希望log整齐，可以在这里用git rebase</li><li>再用git push origin <branch-name></branch-name></li><li>如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch –set-upstream-to <branch-name> origin/<branch-name>。</branch-name></branch-name></li></ul><hr><blockquote><p><strong>本地新建的分支如果不推送到远程，对其他人就是不可见的</strong><br>从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；<br>在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；<br>建立本地分支和远程分支的关联，使用git branch –set-upstream branch-name origin/branch-name；<br>从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。</p></blockquote><hr><blockquote><p><strong>git pull也失败了</strong> 原因是没有指定本地dev分支与远程origin/dev分支的链接<br>根据提示，设置dev和origin/dev的链接<br>$ git branch –set-upstream-to=origin/dev dev</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3&gt;Git常用命令整理&lt;/h3&gt;
+
+
+&lt;p&gt;查看分支：&amp;nbsp;&amp;nbsp;git branch&lt;br&gt;创建分支：&amp;nbsp;&amp;nbsp;git branch &lt;name&gt;&lt;br&gt;切换分支：&amp;nbsp;&amp;nbsp;git checkout &lt;name&gt;&lt;br&gt;创建+切换分支
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue+apollo-vue实现 loading效果</title>
