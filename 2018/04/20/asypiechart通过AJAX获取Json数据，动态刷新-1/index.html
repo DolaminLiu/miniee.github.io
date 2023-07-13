@@ -1,0 +1,858 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="easypiechart," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mia's blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="这是我寄几写来记录的，有需要的可以参考，如果有不对的地方欢迎指正 QAQ首先需要引用JQ和easypiechart相关js我们的需求是，一进入页面为了保证加载快一点，先给定一个值，然后每三秒钟根据后台传来的json文件刷新数据，话不多说，上图。这是初始情况下的echart。 &amp;lt;li&amp;gt;     &amp;lt;div id=&amp;quot;pie_1&amp;quot; class=&amp;quot;piecha">
+<meta name="keywords" content="easypiechart">
+<meta property="og:type" content="article">
+<meta property="og:title" content="easypiechart通过AJAX获取Json数据，动态刷新">
+<meta property="og:url" content="http://yoursite.com/2018/04/20/asypiechart通过AJAX获取Json数据，动态刷新-1/index.html">
+<meta property="og:site_name" content="Mia&#39;s blog">
+<meta property="og:description" content="这是我寄几写来记录的，有需要的可以参考，如果有不对的地方欢迎指正 QAQ首先需要引用JQ和easypiechart相关js我们的需求是，一进入页面为了保证加载快一点，先给定一个值，然后每三秒钟根据后台传来的json文件刷新数据，话不多说，上图。这是初始情况下的echart。 &amp;lt;li&amp;gt;     &amp;lt;div id=&amp;quot;pie_1&amp;quot; class=&amp;quot;piecha">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4620451-154d9fc4af816946.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4620451-c2142cde90a5223b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-04-26T09:31:03.687Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="easypiechart通过AJAX获取Json数据，动态刷新">
+<meta name="twitter:description" content="这是我寄几写来记录的，有需要的可以参考，如果有不对的地方欢迎指正 QAQ首先需要引用JQ和easypiechart相关js我们的需求是，一进入页面为了保证加载快一点，先给定一个值，然后每三秒钟根据后台传来的json文件刷新数据，话不多说，上图。这是初始情况下的echart。 &amp;lt;li&amp;gt;     &amp;lt;div id=&amp;quot;pie_1&amp;quot; class=&amp;quot;piecha">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4620451-154d9fc4af816946.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/20/asypiechart通过AJAX获取Json数据，动态刷新-1/"/>
+
+
+
+
+
+  <title> easypiechart通过AJAX获取Json数据，动态刷新 | Mia's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mia's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">学习&生活记录</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.6.0/APlayer.min.js"></script>
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/20/asypiechart通过AJAX获取Json数据，动态刷新-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mia Liu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mia's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                easypiechart通过AJAX获取Json数据，动态刷新
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T17:47:00+08:00">
+                2018-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>这是我寄几写来记录的，有需要的可以参考，如果有不对的地方欢迎指正 QAQ</strong><br>首先需要引用JQ和easypiechart相关js<br>我们的需求是，一进入页面为了保证加载快一点，先给定一个值，然后每三秒钟根据后台传来的json文件刷新数据，话不多说，上图。这是初始情况下的echart。<br><img src="http://upload-images.jianshu.io/upload_images/4620451-154d9fc4af816946.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="start"></p>
+<pre><code>&lt;li&gt;
+    &lt;div id=&quot;pie_1&quot; class=&quot;piechart&quot;
+        data-percent=&quot;0&quot;&gt;
+        &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;连网状态 &lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;
+    &lt;div id=&quot;pie_2&quot; class=&quot;piechart&quot;
+        data-percent=&quot;0&quot;&gt; 
+        &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;云服务&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;
+    &lt;div id=&quot;pie_3&quot; class=&quot;piechart&quot;
+        data-percent=&quot;18&quot;&gt; 
+        &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;远程运维&lt;/span&gt;
+&lt;/li&gt;
+&lt;li&gt;
+    &lt;div id=&quot;pie_4&quot; class=&quot;piechart&quot; data-percent=&quot;85&quot;&gt;
+        &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;版本升级&lt;/span&gt;
+&lt;/li&gt;
+</code></pre><p>以上是初始情况下的HTML。<br>下面上js。</p>
+<pre>
+var chart1;
+var chart2;
+var chart3;
+var handleProfileSkillPie = function () {
+    //Pie 1
+    $('#pie_1').easyPieChart({
+        easing: 'easeOutBounce',
+        onStep: function(from, to, percent) {
+            $(this.el).find('.percent').text(Math.round(percent)+"%");
+        },
+        lineWidth: 6,
+        barColor: '#F0AD4E'
+    });
+     chart1 = window.chart = $('#pie_1').data('easyPieChart');
+    //Pie 2
+    $('#pie_2').easyPieChart({
+        easing: 'easeOutBounce',
+        onStep: function(from, to, percent) {
+            $(this.el).find('.percent').text(Math.round(percent)+"%");
+        },
+        lineWidth: 6,
+        barColor: '#D9534F'
+    });
+    chart2 = window.chart = $('#pie_2').data('easyPieChart'); 
+    //Pie 3
+    $('#pie_3').easyPieChart({
+        easing: 'easeOutBounce',
+        onStep: function(from, to, percent) {
+            $(this.el).find('.percent').text(Math.round(percent)+"%");
+        },
+        lineWidth: 6,
+        barColor: '#70AFC4'
+    });
+    chart3 = window.chart = $('#pie_3').data('easyPieChart'); 
+    }
+     handleProfileSkillPie();
+</pre>
+
+<p>接下来是AJAX。</p>
+<pre>
+     function loadnumber(){
+         var all;
+         var num;
+         var cloud;
+         var control;
+         $.ajax({
+            url:'数据来源json文件的url',
+            type:'get',
+            dataTpye:'json',
+            cache:false,
+            async:true,
+            success:function(data){
+                    all=data.allCount;
+                    var number=data.statusCount;
+                    num=number.networkStatus;
+                    cloud=number.cloudStatus;
+                    control=number.controlStatus;                               
+                    $('#pie_1').attr('data-percent',Math.round(num/all));
+                    $('#pie_2').attr('data-percent',Math.round(cloud/all));
+                    $('#pie_3').attr('data-percent',Math.round(control/all));              
+                    $('#pie_1 .percent').text(Math.round(num/all)+"%");
+                    $('#pie_2 .percent').text(Math.round(cloud/all)+"%");
+                    $('#pie_3 .percent').text(Math.round(control/all)+"%");
+
+<p>    
+         `//这里重画easypiechart `
+
+                    chart1.update(Math.round(num/all));
+                    chart2.update(Math.round(cloud/all));
+                    chart3.update(Math.round(control/all));
+
+                }    
+         })
+         }
+
+         $(document).ready(function(){
+               window.setInterval(loadnumber,3000);
+             })
+</p></pre>
+
+
+
+<p><img src="http://upload-images.jianshu.io/upload_images/4620451-c2142cde90a5223b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="done"></p>
+<p>大功告成咯，真好玩，这是动态的局部刷新，我不会搞动图进来，so,就酱~</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/easypiechart/" rel="tag"># easypiechart</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/11/myblog/" rel="next" title="myblog">
+                <i class="fa fa-chevron-left"></i> myblog
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/23/git-shell-在Github上传本地项目/" rel="prev" title="通过git shell 在Github上传本地项目">
+                通过git shell 在Github上传本地项目 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/me.jpg"
+               alt="Mia Liu" />
+          <p class="site-author-name" itemprop="name">Mia Liu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/miniee" target="_blank" title="github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/u/3007853767/home" target="_blank" title="weibo">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://juejin.im/user/5897f519b123db16a3a5078e" target="_blank" title="juejin">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  juejin
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.github.com" title="GitHub" target="_blank">GitHub</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+    <div id="music163player">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=448317748&auto=0&height=66"></iframe>
+   </div>
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mia Liu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/meting@1.0.1/dist/Meting.min.js"></script>
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

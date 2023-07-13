@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Mia&#39;s blog</title>
+  
+  <subtitle>学习&amp;生活记录</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-08-11T04:15:29.878Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Mia Liu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git命令整理</title>
+    <link href="http://yoursite.com/2018/08/11/git%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86/"/>
+    <id>http://yoursite.com/2018/08/11/git命令整理/</id>
+    <published>2018-08-11T03:26:00.000Z</published>
+    <updated>2018-08-11T04:15:29.878Z</updated>
+    
+    <content type="html"><![CDATA[<h3>Git常用命令整理</h3><p>查看分支：&nbsp;&nbsp;git branch<br>创建分支：&nbsp;&nbsp;git branch <name><br>切换分支：&nbsp;&nbsp;git checkout <name><br>创建+切换分支：&nbsp;&nbsp;git checkout -b <name><br>合并某分支到当前分支：&nbsp;&nbsp;git merge <name><br>看分支的合并情况: &nbsp;&nbsp;git log –graph –pretty=oneline –abbrev-commit<br>删除分支：&nbsp;&nbsp;git branch -d <name><br>删除untracked files: &nbsp;&nbsp;git clean -nf<br>丢弃一个没有被合并过的分支,强行删除: &nbsp;&nbsp;git branch -D <name><br>查看远程库信息: &nbsp;&nbsp;git remote -v<br>新建一个标签: &nbsp;&nbsp;git tag <tagname><br>指定标签信息: &nbsp;&nbsp;git tag -a <tagname> -m “blablabla…”<br>查看所有标签: &nbsp;&nbsp;git tag<br>查看标签信息： &nbsp;&nbsp;git show tag <tagname><br>推送一个本地标签: &nbsp;&nbsp;git push origin <tagname><br>推送全部未推送过的本地标签： &nbsp;&nbsp;git push origin –tags<br>删除一个本地标签： &nbsp;&nbsp;git tag -d <tagname><br>删除一个远程标签： &nbsp;&nbsp;git push origin :refs/tags/<tagname></tagname></tagname></tagname></tagname></tagname></tagname></name></name></name></name></name></name></p><hr><h3>bug分支</h3>  <blockquote><p>当前正在dev上进行的工作还没有提交  $ git stash 可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作 </p></blockquote><ul><li>首先确定要在哪个分支上修复bug，假定需要在master分支上修复，就从master创建临时分支<br>git checkout master</li><li>修复然后提交<br>git commit -m “modify info”</li><li>修复完成后，切换到master分支，并完成合并,最后删除issue-101分支<br>git checkout master<br>git merge issue-101<br>git branch -d issue-101</li><li>接着回到dev分支<br>git checkout dev  </li><li>工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：<ul><li>一是用git stash apply恢复，但是恢复后，stash内容并不删除，你需要用git stash drop来删除；</li><li>另一种方式是用git stash pop，恢复的同时把stash内容也删了</li></ul></li></ul><hr><p></p><h3>多人协作</h3><p></p><ul><li>首先，可以试图用git push origin <branch-name>推送自己的修改；</branch-name></li><li>如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；</li><li>如果合并有冲突，则解决冲突，并在本地提交；</li><li>没有冲突或者解决掉冲突后</li><li>如果希望log整齐，可以在这里用git rebase</li><li>再用git push origin <branch-name></branch-name></li><li>如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch –set-upstream-to <branch-name> origin/<branch-name>。</branch-name></branch-name></li></ul><hr><blockquote><p><strong>本地新建的分支如果不推送到远程，对其他人就是不可见的</strong><br>从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；<br>在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；<br>建立本地分支和远程分支的关联，使用git branch –set-upstream branch-name origin/branch-name；<br>从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。</p></blockquote><hr><blockquote><p><strong>git pull也失败了</strong> 原因是没有指定本地dev分支与远程origin/dev分支的链接<br>根据提示，设置dev和origin/dev的链接<br>$ git branch –set-upstream-to=origin/dev dev</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3&gt;Git常用命令整理&lt;/h3&gt;
+
+
+&lt;p&gt;查看分支：&amp;nbsp;&amp;nbsp;git branch&lt;br&gt;创建分支：&amp;nbsp;&amp;nbsp;git branch &lt;name&gt;&lt;br&gt;切换分支：&amp;nbsp;&amp;nbsp;git checkout &lt;name&gt;&lt;br&gt;创建+切换分支
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue+apollo-vue实现 loading效果</title>
+    <link href="http://yoursite.com/2018/08/06/ue-apollo-vue%E5%AE%9E%E7%8E%B0loading%E6%95%88%E6%9E%9C/"/>
+    <id>http://yoursite.com/2018/08/06/ue-apollo-vue实现loading效果/</id>
+    <published>2018-08-06T07:34:00.000Z</published>
+    <updated>2018-09-17T09:58:45.992Z</updated>
+    
+    <content type="html"><![CDATA[<p>需求描述：<br>子路由数据渲染完成以前实现loading组件的效果。<br></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">文档写的</span><br><span class="line">&lt;div v-<span class="keyword">if</span>=<span class="string">"$apollo.queries.ping.loading"</span>&gt;Loading...&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">或者</span></span><br><span class="line"><span class="regexp">&lt;div v-if="$apollo.loading"&gt;Loading...&lt;/</span>div&gt;</span><br><span class="line">不起作用，控制台也不报错，所以还是采用简单原始的方法，子组件向父组件传值</span><br></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父组件</span></span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"sec-con clearfix"</span>&gt;</span><br><span class="line">        &lt;loading id=<span class="string">"loading"</span></span><br><span class="line">        v-<span class="keyword">if</span>=<span class="string">"isload == true"</span></span><br><span class="line">          <span class="class"><span class="keyword">class</span></span>=<span class="string">'center'</span></span><br><span class="line">          :loadingWord=<span class="string">"loadingWord"</span></span><br><span class="line">       &gt;&lt;/loading&gt;</span><br><span class="line">&lt;div id=<span class="string">"content"</span>&gt;</span><br><span class="line">    &lt;router-view @getstatus=<span class="string">"getstatus"</span>&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">methods: &#123;</span><br><span class="line">    getstatus (isLoading) &#123;</span><br><span class="line">      <span class="keyword">this</span>.isload = isLoading</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure><pre><code>&lt;pre&gt;//子组件apollo: {...,watchLoading (isLoading) {    this.$emit(&apos;getstatus&apos;, isLoading)  }}&lt;/pre&gt;经测试，功能正常实现。</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;需求描述：&lt;br&gt;子路由数据渲染完成以前实现loading组件的效果。&lt;br&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="VUE" scheme="http://yoursite.com/tags/VUE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VUE通过路由来判断选中状态</title>
+    <link href="http://yoursite.com/2018/04/26/E%E9%80%9A%E8%BF%87%E8%B7%AF%E7%94%B1%E6%9D%A5%E5%88%A4%E6%96%AD%E9%80%89%E4%B8%AD%E7%8A%B6%E6%80%81/"/>
+    <id>http://yoursite.com/2018/04/26/E通过路由来判断选中状态/</id>
+    <published>2018-04-26T09:42:00.000Z</published>
+    <updated>2018-08-07T06:05:01.669Z</updated>
+    
+    <content type="html"><![CDATA[<p>路由配置</p><p><img src="https://upload-images.jianshu.io/upload_images/4620451-875a1f46bb2f0616.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="路由.png"></p><p>/main是一个非登录的首页，主要功能就是有四个菜单选项，点击进入相应的子页面</p><p><img src="https://upload-images.jianshu.io/upload_images/4620451-a564816e793d32dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="main页面.png"></p><p>这些子页面都有共同的头部和侧边栏，所以归类到/home这个路由下，main.js需要配置一下项目一打开进入的是/main页面</p><p><img src="https://upload-images.jianshu.io/upload_images/4620451-24624f94a258af92.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="home.jpg"></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (to.path === <span class="string">'/'</span>) &#123;</span><br><span class="line">    next(&#123; <span class="attr">path</span>: <span class="string">'/main'</span> &#125;)</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    next()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>/home侧栏的写法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 左边导航菜单</span></span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"side-bar"</span>&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"side-list"</span>&gt;</span><br><span class="line">        &lt;div :<span class="keyword">default</span>-active=<span class="string">"$route.router"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"menu-demo"</span> router&gt;</span><br><span class="line">          &lt;div v-<span class="keyword">for</span>=<span class="string">"item in $router.options.routes[2].children"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"nav-list"</span></span><br><span class="line">          :key=<span class="string">"item.id"</span></span><br><span class="line">          :<span class="class"><span class="keyword">class</span></span>=<span class="string">"$route.path.indexOf(item.path) &gt;= 0 ?'is-active':''"</span></span><br><span class="line">          @click=<span class="string">"$router.push(item.path)"</span>&gt;</span><br><span class="line">            &lt;div :index=<span class="string">"item.path"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"rt-link"</span>&gt;</span><br><span class="line">              &lt;i :<span class="class"><span class="keyword">class</span></span>=<span class="string">"item.iconCls"</span>&gt;&lt;/i&gt;</span><br><span class="line">              &lt;h4&gt; &#123;&#123; item.name &#125;&#125;&lt;<span class="regexp">/h4&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">          &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;路由配置&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/4620451-875a1f46bb2f0616.png?imageMogr2/auto-orient/strip%7CimageVie
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="VUE" scheme="http://yoursite.com/tags/VUE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>100 days</title>
+    <link href="http://yoursite.com/2018/04/25/100-days/"/>
+    <id>http://yoursite.com/2018/04/25/100-days/</id>
+    <published>2018-04-25T09:55:00.000Z</published>
+    <updated>2018-08-07T06:24:29.066Z</updated>
+    
+    <content type="html"><![CDATA[<p>分享一首歌,还想听你的故事。</p><div class="aplayer" data-id="413829873" data-server="netease" data-type="song"></div><p>作曲 : 谢知非<br>作词 : 谢知非<br>编曲：小皮</p><p>我想听你讲<br>你的故事<br>很多离奇的趣事<br>和眩目落日<br>宁静的湖畔<br>我想让你<br>告诉我你的名字<br>它的故事<br>指尖指背的刺<br>点缀了幼稚<br>零点过十分<br>等黑夜吞噬<br>我们只是共享了几个故事<br>对你来说也许是平凡小事<br>说出的字一秒就成了历史<br>我只想紧抓着不让它流逝<br>我们其实才是最适合彼此<br>多想让你知道我此刻心事<br>今天的誓明天是否还坚持<br>你是否还有勇气再说开始</p><p>我想让你懂<br>我的固执<br>很多人来了又走<br>都不足挂齿<br>只有你不同<br>不必修饰<br>这么多的日子里<br>你都是心事<br>喝完这杯酒<br>再聊一会儿吧<br>零点过十分<br>等黑夜吞噬<br>我们只是共享了几个故事<br>对你来说也许是平凡小事<br>说出的字一秒就成了历史<br>我只想紧抓着不让它流逝<br>我们其实才是最适合彼此<br>多想让你知道我此刻心事<br>今天的誓明天是否还坚持<br>你是否还有勇气再说<br>我们只是共享了几个故事<br>对你来说也许是平凡小事<br>说出的字一秒就成了历史<br>我只想紧抓着不让它流逝<br>我们其实才是最适合彼此<br>多想让你知道我此刻心事<br>今天的誓明天是否还坚持<br>你是否还有勇气再说开始</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;分享一首歌,还想听你的故事。&lt;/p&gt;
+&lt;div class=&quot;aplayer&quot; data-id=&quot;413829873&quot; data-server=&quot;netease&quot; data-type=&quot;song&quot;&gt;&lt;/div&gt;
+
+&lt;p&gt;作曲 : 谢知非&lt;br&gt;作词 : 谢知非&lt;br&gt;编曲：
+      
+    
+    </summary>
+    
+      <category term="emotion" scheme="http://yoursite.com/categories/emotion/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>vue新建项目</title>
+    <link href="http://yoursite.com/2018/04/25/vue%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
+    <id>http://yoursite.com/2018/04/25/vue新建项目/</id>
+    <published>2018-04-25T09:24:00.000Z</published>
+    <updated>2018-04-25T09:47:43.781Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="新建VUE项目"><a href="#新建VUE项目" class="headerlink" title="新建VUE项目"></a>新建VUE项目</h5><p>环境要求：  安装有 Node.js、 vue、 vue-cli<br></p><h6 id="在硬盘上找一个文件夹放工程用的，在终端中进入该目录-cd目录路径"><a href="#在硬盘上找一个文件夹放工程用的，在终端中进入该目录-cd目录路径" class="headerlink" title="在硬盘上找一个文件夹放工程用的，在终端中进入该目录,cd目录路径"></a>在硬盘上找一个文件夹放工程用的，在终端中进入该目录,cd目录路径</h6><p>npm install-g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a>  // 为了加快速度，不必须</p><h6 id="安装webpack"><a href="#安装webpack" class="headerlink" title="安装webpack"></a>安装webpack</h6><p>cnpm install webpack-g</p><h6 id="安装vue脚手架"><a href="#安装vue脚手架" class="headerlink" title="安装vue脚手架"></a>安装vue脚手架</h6><p>npm install vue-cli-g</p><p>然后就可以创建vue项目了</p><h6 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h6><ul><li>vue init webpack projectName</li><li>Npm install</li><li>Npm run dev</li></ul><p><br><br></p><h6 id="一些其他tips"><a href="#一些其他tips" class="headerlink" title="一些其他tips"></a><code>一些其他tips</code></h6><p>删除node_modules文件夹</p><ul><li>npm install rimraf -g </li><li>rimraf node_modules</li></ul><p>使用sass<br>安装sass的依赖包</p><ul><li>npm install –save-dev sass-loader //sass-loader依赖于node-sass </li><li>npm install –save-dev node-sass</li></ul><p>引用sass/scss 文件</p><ul><li>@import “./common/scss/mixin”;</li></ul><p><br><br></p><h6 id="配置-flexible"><a href="#配置-flexible" class="headerlink" title="配置 flexible"></a>配置 flexible</h6><ul><li>安装 lib-flexible<ul><li>npm i lib-flexible –save</li></ul></li><li><p>引入 lib-flexible,在项目入口文件 main.js 里 引入 lib-flexible</p></li><li><p>添加 meta 标签</p><ul><li>在项目根目录的 index.html 中添加如下 meta</li></ul></li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span><br></pre></td></tr></table></figure><p><br></p><h6 id="px-转-rem"><a href="#px-转-rem" class="headerlink" title="px 转 rem"></a>px 转 rem</h6><p>实际开发中，我们通过设计稿得到的值单位是 px，所以要将 px 转换成 rem 再写进样式中。<br><br>将 px 转换成 rem 我们将使用 px2rem 这个工具，它有 webpack 的 loader：px2rem-loader </p><ul><li>安装 px2rem-loader<ul><li>npm i px2rem-loade –save-dev</li></ul></li><li>配置 px2rem-loade<blockquote><p>在 vue-cli 生成的 webpack 配置中，vue-loader 的 options 和其他样式文件 loader 最终是都是由 build/utils.js 里的一个方法生成的。</p></blockquote></li></ul><p>我们只需在 cssLoader 后再加上一个 px2remLoader 即可，px2rem-loader 的 remUnit 选项意思是 1rem=多少像素，结合 lib-flexible 的方案，我们将 px2remLoader 的 options.remUnit 设置成设计稿宽度的 1/10，这里我们假设设计稿宽为 750px。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// utils.js</span></span><br><span class="line"><span class="keyword">var</span> cssLoader = &#123;</span><br><span class="line">  loader: <span class="string">'css-loader'</span>,</span><br><span class="line">  options: &#123;</span><br><span class="line">    minimize: process.env.NODE_ENV === <span class="string">'production'</span>,</span><br><span class="line">    sourceMap: options.sourceMap</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> px2remLoader = &#123;</span><br><span class="line">  loader: <span class="string">'px2rem-loader'</span>,</span><br><span class="line">  options: &#123;</span><br><span class="line">    remUnit: <span class="number">75</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure></p><p>并放进 loaders 数组中<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// utils.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateLoaders</span>(<span class="params">loader, loaderOptions</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> loaders = [cssLoader, px2remLoader]</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure></p><p>修改配置后需要重启，然后我们在组件中写单位直接写 px，设计稿量多少就可以写多少。<br><br><code>都是在网上收录的，供自己看</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h5 id=&quot;新建VUE项目&quot;&gt;&lt;a href=&quot;#新建VUE项目&quot; class=&quot;headerlink&quot; title=&quot;新建VUE项目&quot;&gt;&lt;/a&gt;新建VUE项目&lt;/h5&gt;&lt;p&gt;环境要求：  安装有 Node.js、 vue、 vue-cli&lt;br&gt;&lt;/p&gt;
+&lt;h6 id=&quot;在
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="VUE" scheme="http://yoursite.com/tags/VUE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>通过git shell 在Github上传本地项目</title>
+    <link href="http://yoursite.com/2018/04/23/git-shell-%E5%9C%A8Github%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E9%A1%B9%E7%9B%AE/"/>
+    <id>http://yoursite.com/2018/04/23/git-shell-在Github上传本地项目/</id>
+    <published>2018-04-23T08:23:00.000Z</published>
+    <updated>2018-04-23T08:26:41.872Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>首先现在github上新建一个库，再进行如下操作，过程不赘述</p></blockquote><p>1.打开git shell</p><p>2.cd到项目位置 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: green;font-size:14px">// cd archives-vue</span></p><p>3.git init</p><p>4.Get add&nbsp;. &nbsp;&nbsp;&nbsp;&nbsp; <span style="color: green;font-size:14px">//这里add后面有空格</span></p><p>5.git commit -m “” &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: green;font-size:14px">//设置提交信息</span></p><p>6.git remote add origin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: green;font-size:14px">//本地仓库链接远程仓库，origin为远程库的名称，后面跟着开始新建库的github的路径</span></p><p>7.git remote -v</p><p>8.git push origin master &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: green;font-size:14px">//push文件到仓库中<br><br><br><br><br><span style="color: red">期间若有报错</span></span></p><p>则需要更新一下<br><br>TortoiseGit-preview-2.5.7.0-20180127-b2d00f8-64bit.msi和Git-2.16.2-64-bit.exe<br>链接地址为：<br><br><a href="https://github.com/git-for-windows/git/releases/download/v2.16.2.windows.1/Git-2.16.2-64-bit.exe" target="_blank" rel="noopener">https://github.com/git-for-windows/git/releases/download/v2.16.2.windows.1/Git-2.16.2-64-bit.exe</a><br><br><a href="https://download.tortoisegit.org/tgit/2.6.0.0/" target="_blank" rel="noopener">https://download.tortoisegit.org/tgit/2.6.0.0/</a><br><br><br>9.更新以后在下载安装的git-cmd打开,在弹出的窗口登录github账号 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: green;font-size:14px">//一般目录为c/program files/git</span></p><p>10.cd到项目位置 </p><p>11.git push origin master</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;首先现在github上新建一个库，再进行如下操作，过程不赘述&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;1.打开git shell&lt;/p&gt;
+&lt;p&gt;2.cd到项目位置 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;span styl
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="github" scheme="http://yoursite.com/tags/github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>easypiechart通过AJAX获取Json数据，动态刷新</title>
+    <link href="http://yoursite.com/2018/04/20/asypiechart%E9%80%9A%E8%BF%87AJAX%E8%8E%B7%E5%8F%96Json%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%8A%A8%E6%80%81%E5%88%B7%E6%96%B0-1/"/>
+    <id>http://yoursite.com/2018/04/20/asypiechart通过AJAX获取Json数据，动态刷新-1/</id>
+    <published>2018-04-20T09:47:00.000Z</published>
+    <updated>2018-04-26T09:31:03.687Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>这是我寄几写来记录的，有需要的可以参考，如果有不对的地方欢迎指正 QAQ</strong><br>首先需要引用JQ和easypiechart相关js<br>我们的需求是，一进入页面为了保证加载快一点，先给定一个值，然后每三秒钟根据后台传来的json文件刷新数据，话不多说，上图。这是初始情况下的echart。<br><img src="http://upload-images.jianshu.io/upload_images/4620451-154d9fc4af816946.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="start"></p><pre><code>&lt;li&gt;    &lt;div id=&quot;pie_1&quot; class=&quot;piechart&quot;        data-percent=&quot;0&quot;&gt;        &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;连网状态 &lt;/span&gt;&lt;/li&gt;&lt;li&gt;    &lt;div id=&quot;pie_2&quot; class=&quot;piechart&quot;        data-percent=&quot;0&quot;&gt;         &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;云服务&lt;/span&gt;&lt;/li&gt;&lt;li&gt;    &lt;div id=&quot;pie_3&quot; class=&quot;piechart&quot;        data-percent=&quot;18&quot;&gt;         &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;远程运维&lt;/span&gt;&lt;/li&gt;&lt;li&gt;    &lt;div id=&quot;pie_4&quot; class=&quot;piechart&quot; data-percent=&quot;85&quot;&gt;        &lt;span class=&quot;percent&quot;&gt;&lt;/span&gt;    &lt;/div&gt; &lt;span class=&quot;title&quot;&gt;版本升级&lt;/span&gt;&lt;/li&gt;</code></pre><p>以上是初始情况下的HTML。<br>下面上js。</p><pre>var chart1;var chart2;var chart3;var handleProfileSkillPie = function () {    //Pie 1    $('#pie_1').easyPieChart({        easing: 'easeOutBounce',        onStep: function(from, to, percent) {            $(this.el).find('.percent').text(Math.round(percent)+"%");        },        lineWidth: 6,        barColor: '#F0AD4E'    });     chart1 = window.chart = $('#pie_1').data('easyPieChart');    //Pie 2    $('#pie_2').easyPieChart({        easing: 'easeOutBounce',        onStep: function(from, to, percent) {            $(this.el).find('.percent').text(Math.round(percent)+"%");        },        lineWidth: 6,        barColor: '#D9534F'    });    chart2 = window.chart = $('#pie_2').data('easyPieChart');     //Pie 3    $('#pie_3').easyPieChart({        easing: 'easeOutBounce',        onStep: function(from, to, percent) {            $(this.el).find('.percent').text(Math.round(percent)+"%");        },        lineWidth: 6,        barColor: '#70AFC4'    });    chart3 = window.chart = $('#pie_3').data('easyPieChart');     }     handleProfileSkillPie();</pre><p>接下来是AJAX。</p><pre>     function loadnumber(){         var all;         var num;         var cloud;         var control;         $.ajax({            url:'数据来源json文件的url',            type:'get',            dataTpye:'json',            cache:false,            async:true,            success:function(data){                    all=data.allCount;                    var number=data.statusCount;                    num=number.networkStatus;                    cloud=number.cloudStatus;                    control=number.controlStatus;                                                   $('#pie_1').attr('data-percent',Math.round(num/all));                    $('#pie_2').attr('data-percent',Math.round(cloud/all));                    $('#pie_3').attr('data-percent',Math.round(control/all));                                  $('#pie_1 .percent').text(Math.round(num/all)+"%");                    $('#pie_2 .percent').text(Math.round(cloud/all)+"%");                    $('#pie_3 .percent').text(Math.round(control/all)+"%");<p>             `//这里重画easypiechart `                    chart1.update(Math.round(num/all));                    chart2.update(Math.round(cloud/all));                    chart3.update(Math.round(control/all));                }             })         }         $(document).ready(function(){               window.setInterval(loadnumber,3000);             })</p></pre><p><img src="http://upload-images.jianshu.io/upload_images/4620451-c2142cde90a5223b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="done"></p><p>大功告成咯，真好玩，这是动态的局部刷新，我不会搞动图进来，so,就酱~</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;这是我寄几写来记录的，有需要的可以参考，如果有不对的地方欢迎指正 QAQ&lt;/strong&gt;&lt;br&gt;首先需要引用JQ和easypiechart相关js&lt;br&gt;我们的需求是，一进入页面为了保证加载快一点，先给定一个值，然后每三秒钟根据后台传来的json文件刷新数
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="easypiechart" scheme="http://yoursite.com/tags/easypiechart/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>myblog</title>
+    <link href="http://yoursite.com/2018/04/11/myblog/"/>
+    <id>http://yoursite.com/2018/04/11/myblog/</id>
+    <published>2018-04-11T08:36:23.000Z</published>
+    <updated>2018-04-27T03:41:37.336Z</updated>
+    
+    <content type="html"><![CDATA[<p>她那时候还太年轻，不知道所有命运赠送的礼物早已在暗中标好了价格。<br>如果知道结局…<br><img src="/2018/04/11/myblog/2.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;她那时候还太年轻，不知道所有命运赠送的礼物早已在暗中标好了价格。&lt;br&gt;如果知道结局…&lt;br&gt;&lt;img src=&quot;/2018/04/11/myblog/2.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="emotion" scheme="http://yoursite.com/tags/emotion/"/>
+    
+  </entry>
+  
+</feed>
